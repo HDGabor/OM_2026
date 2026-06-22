@@ -17,7 +17,8 @@
   .card { background: #fff; border: 0.5px solid #e0ddd6; border-radius: 8px; padding: 0.85rem 1rem; }
   .card-tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 4px; margin-bottom: 7px; }
   .card-value { font-size: 1rem; font-weight: 500; margin-bottom: 3px; }
-  .card-sub { font-size: 11px; color: #bbb; }
+  .card-sub { font-size: 11px; color: #bbb; line-height: 1.5; }
+  .card-roi { font-size: 11px; font-weight: 500; margin-top: 5px; }
   .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem; }
   .legend-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #555; }
   .legend-swatch { width: 11px; height: 11px; border-radius: 2px; flex-shrink: 0; }
@@ -31,33 +32,38 @@
 <div class="container">
 
 <h1>2026-os projektek összehasonlítása</h1>
-<p class="subtitle">5 projekt · adományozók, összegek, fizetési módok · Forrás: adományok-2026-06-22.csv</p>
+<p class="subtitle">5 projekt · adományozók, összegek, hirdetési költés · Forrás: adományok-2026-06-22.csv</p>
 
 <div class="summary-grid">
   <div class="card">
     <div class="card-tag" style="background:#dce8f7;color:#0c447c;">Hóhelyzet</div>
     <div class="card-value">2 559 525 Ft</div>
-    <div class="card-sub">294 adományozó · 327 trx · 164 nap<br>2026.01.07 – 06.20.</div>
+    <div class="card-sub">294 adományozó · 327 tranzakció · 164 nap<br>2026.01.07 – 06.20.</div>
+    <div class="card-roi" style="color:#0c447c;">Hirdetés: 169 630 Ft · ROI: 6,18×</div>
   </div>
   <div class="card">
     <div class="card-tag" style="background:#e1f3e8;color:#085041;">Betegőrző</div>
     <div class="card-value">4 454 765 Ft</div>
-    <div class="card-sub">656 adományozó · 719 trx · 134 nap<br>2026.02.05 – 06.19.</div>
+    <div class="card-sub">656 adományozó · 719 tranzakció · 134 nap<br>2026.02.05 – 06.19.</div>
+    <div class="card-roi" style="color:#085041;">Hirdetés: 79 923 Ft · ROI: 5,66×</div>
   </div>
   <div class="card">
     <div class="card-tag" style="background:#faeeda;color:#633806;">Fúró</div>
     <div class="card-value">2 494 542 Ft</div>
-    <div class="card-sub">333 adományozó · 361 trx · 94 nap<br>2026.03.20 – 06.22.</div>
+    <div class="card-sub">333 adományozó · 361 tranzakció · 94 nap<br>2026.03.20 – 06.22.</div>
+    <div class="card-roi" style="color:#633806;">Hirdetés: 81 242 Ft · ROI: 2,63×</div>
   </div>
   <div class="card">
     <div class="card-tag" style="background:#fbeaf0;color:#72243e;">Képeslap</div>
     <div class="card-value">996 000 Ft</div>
-    <div class="card-sub">317 adományozó · 332 trx · 50 nap<br>2026.04.29 – 06.18.</div>
+    <div class="card-sub">317 adományozó · 332 tranzakció · 50 nap<br>2026.04.29 – 06.18.</div>
+    <div class="card-roi" style="color:#72243e;">Hirdetés: 199 881 Ft · ROI: 0,42×</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#eeedfe;color:#3c3489;">Csomagtartó</div>
+    <div class="card-tag" style="background:#eeedfe;color:#3c3489;">Mentőmotoros</div>
     <div class="card-value">668 150 Ft</div>
-    <div class="card-sub">129 adományozó · 133 trx · 14 nap<br>2026.06.09 – 06.22.</div>
+    <div class="card-sub">129 adományozó · 133 tranzakció · 14 nap<br>2026.06.09 – 06.22.</div>
+    <div class="card-roi" style="color:#3c3489;">Hirdetés: 256 266 Ft · ROI: 0,76×</div>
   </div>
 </div>
 
@@ -68,9 +74,29 @@
     <span class="legend-item"><span class="legend-swatch" style="background:#e07b39"></span>Egyéb forrás</span>
   </div>
   <div class="chart-wrap" style="height:280px;">
-    <canvas id="totalBar" role="img" aria-label="Összes bevétel projektenként">5 projekt bevétele feliratkozó és egyéb bontásban.</canvas>
+    <canvas id="totalBar" role="img" aria-label="Összes bevétel projektenként">5 projekt bevétele.</canvas>
   </div>
-  <p class="insight">A Betegőrző monitorok projekt gyűjtötte a legtöbb pénzt (4,45 M Ft). A Csomagtartó projekt mindössze 14 nap alatt gyűjtötte a 668 150 Ft-ot, ami rendkívül rövid kampányidőhöz képest erős eredmény.</p>
+  <p class="insight">A Betegőrző monitorok projekt gyűjtötte a legtöbb pénzt (4,45 M Ft). A Mentőmotoros gyűjtés mindössze 14 nap alatt gyűjtötte a 668 150 Ft-ot.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Bevétel vs. hirdetési költés</div>
+  <div class="legend">
+    <span class="legend-item"><span class="legend-swatch" style="background:#3266ad"></span>Egyéb bevétel</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#e24b4a"></span>Hirdetési költés</span>
+  </div>
+  <div class="chart-wrap" style="height:280px;">
+    <canvas id="roiBar" role="img" aria-label="Bevétel és hirdetési költés projektenként">Bevétel és hirdetési költés összehasonlítása.</canvas>
+  </div>
+  <p class="insight">A hirdetési költés az egyéb forrásból érkező adományokat hozza. A Hóhelyzet és Betegőrző projektek esetén az egyéb bevétel meghaladja a hirdetési kiadást. A Képeslapnál és Mentőmotorosnál fordított az arány — a hirdetési büdzsé több volt, mint az általa hozott egyéb bevétel.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Hirdetési ROI (1 Ft hirdetésre jutó bevétel)</div>
+  <div class="chart-wrap" style="height:260px;">
+    <canvas id="roiRatioBar" role="img" aria-label="Hirdetési ROI projektenként">ROI értékek projektenként.</canvas>
+  </div>
+  <p class="insight">A ROI itt az egyéb forrásból érkező bevételt osztja a hirdetési költéssel, mivel a hirdetések jellemzően nem feliratkozókat, hanem új adományozókat hoznak. A Hóhelyzet (6,18×) és Betegőrző (5,66×) projektek térültek meg legjobban. A Képeslap (0,42×) és Mentőmotoros (0,76×) projekteknél a hirdetési költés meghaladta az egyéb forrásból érkező bevételt — ugyanakkor ezek a kampányok a feliratkozói bázis aktiválásában is értéket teremthetnek.</p>
 </div>
 
 <div class="section">
@@ -82,7 +108,7 @@
   <div class="chart-wrap" style="height:280px;">
     <canvas id="donorsBar" role="img" aria-label="Adományozók száma projektenként">Adományozók száma feliratkozó és egyéb bontásban.</canvas>
   </div>
-  <p class="insight">A feliratkozók aránya minden projektnél magas: Képeslap 94%, Betegőrző 92%, Fúró 90%, Csomagtartó 78%, Hóhelyzet 82%. A Hóhelyzet és Csomagtartó projekteknél volt a legnagyobb az egyéb forrásból érkező adományozók aránya (~18–22%).</p>
+  <p class="insight">A feliratkozók aránya minden projektnél magas: Képeslap 94%, Betegőrző 92%, Fúró 90%, Hóhelyzet 82%, Mentőmotoros 78%.</p>
 </div>
 
 <div class="section">
@@ -102,7 +128,7 @@
   <div class="chart-wrap" style="height:280px;">
     <canvas id="payBar" role="img" aria-label="Fizetési módok összeg szerint projektenként">Bankkártya, átutalás, csekk összegek projektenként.</canvas>
   </div>
-  <p class="insight">A Betegőrző monitoros projektnél az átutalás aránya kiemelkedően magas (24%). A Csomagtartó projektnél a csekk aránya alacsony (6%), ami a rövid kampányidővel magyarázható.</p>
+  <p class="insight">A Betegőrző monitoros projektnél az átutalás aránya kiemelkedően magas (24%). A bankkártya mindenhol domináns (76–92%).</p>
 </div>
 
 <div class="section">
@@ -114,7 +140,7 @@
   <div class="chart-wrap" style="height:280px;">
     <canvas id="avgBar" role="img" aria-label="Átlagos adomány projektenként">Átlagos adomány összehasonlítása.</canvas>
   </div>
-  <p class="insight">A Hóhelyzet projektnél az egyéb forrásból érkező adományok átlaga kiemelkedően magas (18 706 Ft), ami néhány nagy összegű szervezeti befizetésre utalhat. A Képeslap projekt hozta a legalacsonyabb feliratkozói átlagot (2 923 Ft).</p>
+  <p class="insight">A Hóhelyzet projektnél az egyéb forrásból érkező adományok átlaga kiemelkedően magas (18 706 Ft). A Képeslap projekt hozta a legalacsonyabb feliratkozói átlagot (2 923 Ft).</p>
 </div>
 
 <div class="section">
@@ -122,48 +148,48 @@
   <div class="chart-wrap" style="height:260px;">
     <canvas id="dailyBar" role="img" aria-label="Napi átlagos bevétel projektenként">Napi átlagos bevétel összehasonlítása.</canvas>
   </div>
-  <p class="insight">A Csomagtartó projekt napi átlaga (47 725 Ft/nap) messze a legmagasabb — ami a kampány intenzitását mutatja. A Betegőrző 33 244 Ft/nap, a Fúró 26 537 Ft/nap értékkel követi. A Hóhelyzet projekt hosszú futamideje miatt a legalacsonyabb (15 607 Ft/nap).</p>
+  <p class="insight">A Mentőmotoros gyűjtés napi átlaga (47 725 Ft/nap) a legmagasabb a rövid, intenzív kampánynak köszönhetően. A Betegőrző 33 244 Ft/nap értékkel követi.</p>
 </div>
 
 <p style="font-size:11px;color:#ccc;text-align:right;margin-top:0.5rem;">Generálva: 2026-06-22</p>
 </div>
 
 <script>
-const projektek = ['Hóhelyzet', 'Betegőrző', 'Fúró', 'Képeslap', 'Csomagtartó'];
+const projektek = ['Hóhelyzet', 'Betegőrző', 'Fúró', 'Képeslap', 'Mentőmotoros'];
 const projColors = ['#185FA5','#0F6E56','#854F0B','#993556','#534AB7'];
 
 const d = {
-  fel_összeg:  [1512005, 4002402, 2281042,  912000, 472650],
-  egyeb_összeg:[1047520,  452363,  213500,   84000, 195500],
-  fel_fő:      [240, 605, 299, 298, 100],
-  egyeb_fő:    [ 54,  51,  34,  19,  29],
-  bank:        [1959000, 3183348, 2284542, 797000, 555150],
-  atur:        [ 486500, 1079702,  153500, 158000,  74000],
-  csekk:       [ 114025,  191715,   56500,  41000,  39000],
-  avg_fel:     [5579, 6010, 7040, 2923, 4634],
-  avg_egyeb:   [18706, 8535, 5770, 4200, 6306],
-  total:       [2559525, 4454765, 2494542, 996000, 668150],
-  napok:       [164, 134, 94, 50, 14],
+  fel_összeg:   [1512005, 4002402, 2281042,  912000, 472650],
+  egyeb_összeg: [1047520,  452363,  213500,   84000, 195500],
+  fel_fő:       [240, 605, 299, 298, 100],
+  egyeb_fő:     [ 54,  51,  34,  19,  29],
+  bank:         [1959000, 3183348, 2284542, 797000, 555150],
+  atur:         [ 486500, 1079702,  153500, 158000,  74000],
+  csekk:        [ 114025,  191715,   56500,  41000,  39000],
+  avg_fel:      [5579, 6010, 7040, 2923, 4634],
+  avg_egyeb:    [18706, 8535, 5770, 4200, 6306],
+  total:        [2559525, 4454765, 2494542, 996000, 668150],
+  hird:         [169630, 79923, 81242, 199881, 256266],
+  napok:        [164, 134, 94, 50, 14],
 };
 
 function tickFt(v) {
   if (v === 0) return '0';
   if (v >= 1000000) {
     const m = v / 1000000;
-    return (Number.isInteger(m) ? m : m.toFixed(1)) + ' M Ft';
+    return (Number.isInteger(m) ? m : parseFloat(m.toFixed(1))) + ' M';
   }
-  if (v >= 1000) return Math.round(v / 1000) + ' e Ft';
-  return v + ' Ft';
+  if (v >= 1000) return Math.round(v / 1000) + ' e';
+  return v + '';
 }
 
-const hBar = (stacked) => ({
-  responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-  plugins: { legend: { display: false } },
-  scales: {
-    x: { stacked: !!stacked, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#999', callback: tickFt }},
-    y: { stacked: !!stacked, grid: { display: false }, ticks: { font: { size: 12 }, color: '#444' }}
-  }
-});
+// Függőleges oszlopdiagram: x = kategória (projekt nevek lent), y = értékek bal oldalon
+function xCat() {
+  return { grid: { display: false }, ticks: { font: { size: 11 }, color: '#444', maxRotation: 20, minRotation: 0 } };
+}
+function yVal(cb, stacked) {
+  return { stacked: !!stacked, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#999', callback: cb } };
+}
 
 new Chart(document.getElementById('totalBar'), {
   type: 'bar',
@@ -171,7 +197,34 @@ new Chart(document.getElementById('totalBar'), {
     { label: 'Feliratkozó',  data: d.fel_összeg,   backgroundColor: '#3266ad', borderRadius: 3, borderSkipped: false },
     { label: 'Egyéb forrás', data: d.egyeb_összeg, backgroundColor: '#e07b39', borderRadius: 3, borderSkipped: false }
   ]},
-  options: { ...hBar(true), plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.x === 0 ? null : ' ' + ctx.dataset.label + ': ' + ctx.parsed.x.toLocaleString('hu-HU') + ' Ft' }}}}
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y===0?null:' '+ctx.dataset.label+': '+ctx.parsed.y.toLocaleString('hu-HU')+' Ft' }}},
+    scales: { x: { ...xCat(), stacked: true }, y: yVal(tickFt, true) }
+  }
+});
+
+new Chart(document.getElementById('roiBar'), {
+  type: 'bar',
+  data: { labels: projektek, datasets: [
+    { label: 'Egyéb bevétel',    data: d.egyeb_összeg, backgroundColor: '#3266ad', borderRadius: 3, borderSkipped: false },
+    { label: 'Hirdetési költés', data: d.hird,         backgroundColor: '#e24b4a', borderRadius: 3, borderSkipped: false }
+  ]},
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+ctx.parsed.y.toLocaleString('hu-HU')+' Ft' }}},
+    scales: { x: xCat(), y: yVal(tickFt, false) }
+  }
+});
+
+const roiValues = projektek.map((_, i) => parseFloat((d.egyeb_összeg[i] / d.hird[i]).toFixed(2)));
+new Chart(document.getElementById('roiRatioBar'), {
+  type: 'bar',
+  data: { labels: projektek, datasets: [
+    { label: 'ROI', data: roiValues, backgroundColor: projColors, borderRadius: 3, borderSkipped: false }
+  ]},
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ROI: '+ctx.parsed.y+'× (egyéb bevétel / hirdetési költés)' }}},
+    scales: { x: xCat(), y: yVal(v => v+'×', false) }
+  }
 });
 
 new Chart(document.getElementById('donorsBar'), {
@@ -180,13 +233,9 @@ new Chart(document.getElementById('donorsBar'), {
     { label: 'Feliratkozó',  data: d.fel_fő,   backgroundColor: '#3266ad', borderRadius: 3, borderSkipped: false },
     { label: 'Egyéb forrás', data: d.egyeb_fő, backgroundColor: '#e07b39', borderRadius: 3, borderSkipped: false }
   ]},
-  options: {
-    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.x + ' fő' }}},
-    scales: {
-      x: { stacked: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#999' }},
-      y: { stacked: true, grid: { display: false }, ticks: { font: { size: 12 }, color: '#444' }}
-    }
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+ctx.parsed.y+' fő' }}},
+    scales: { x: { ...xCat(), stacked: true }, y: yVal(v => v, true) }
   }
 });
 
@@ -196,13 +245,9 @@ new Chart(document.getElementById('ratioBar'), {
   data: { labels: projektek, datasets: [
     { label: 'Feliratkozó arány', data: felAranyek, backgroundColor: projColors, borderRadius: 3, borderSkipped: false }
   ]},
-  options: {
-    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' Feliratkozó arány: ' + ctx.parsed.x + '%' }}},
-    scales: {
-      x: { min: 0, max: 100, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#999', callback: v => v + '%' }},
-      y: { grid: { display: false }, ticks: { font: { size: 12 }, color: '#444' }}
-    }
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' Feliratkozó arány: '+ctx.parsed.y+'%' }}},
+    scales: { x: xCat(), y: { min: 0, max: 100, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#999', callback: v => v+'%' } } }
   }
 });
 
@@ -213,7 +258,10 @@ new Chart(document.getElementById('payBar'), {
     { label: 'Átutalás',   data: d.atur,  backgroundColor: '#6fa8dc', borderRadius: 3, borderSkipped: false },
     { label: 'Csekk',      data: d.csekk, backgroundColor: '#a4c2f4', borderRadius: 3, borderSkipped: false }
   ]},
-  options: { ...hBar(true), plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.x === 0 ? null : ' ' + ctx.dataset.label + ': ' + ctx.parsed.x.toLocaleString('hu-HU') + ' Ft' }}}}
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y===0?null:' '+ctx.dataset.label+': '+ctx.parsed.y.toLocaleString('hu-HU')+' Ft' }}},
+    scales: { x: { ...xCat(), stacked: true }, y: yVal(tickFt, true) }
+  }
 });
 
 new Chart(document.getElementById('avgBar'), {
@@ -222,13 +270,9 @@ new Chart(document.getElementById('avgBar'), {
     { label: 'Feliratkozó átlag', data: d.avg_fel,   backgroundColor: '#3266ad', borderRadius: 3, borderSkipped: false },
     { label: 'Egyéb átlag',       data: d.avg_egyeb, backgroundColor: '#e07b39', borderRadius: 3, borderSkipped: false }
   ]},
-  options: {
-    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.x.toLocaleString('hu-HU') + ' Ft' }}},
-    scales: {
-      x: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#999', callback: v => v === 0 ? '0' : v.toLocaleString('hu-HU') + ' Ft' }},
-      y: { grid: { display: false }, ticks: { font: { size: 12 }, color: '#444' }}
-    }
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+ctx.parsed.y.toLocaleString('hu-HU')+' Ft' }}},
+    scales: { x: xCat(), y: yVal(v => v===0?'0':v.toLocaleString('hu-HU')+' Ft', false) }
   }
 });
 
@@ -238,13 +282,9 @@ new Chart(document.getElementById('dailyBar'), {
   data: { labels: projektek, datasets: [
     { label: 'Ft/nap', data: daily, backgroundColor: projColors, borderRadius: 3, borderSkipped: false }
   ]},
-  options: {
-    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + Math.round(ctx.parsed.x).toLocaleString('hu-HU') + ' Ft/nap' }}},
-    scales: {
-      x: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#999', callback: tickFt }},
-      y: { grid: { display: false }, ticks: { font: { size: 12 }, color: '#444' }}
-    }
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+Math.round(ctx.parsed.y).toLocaleString('hu-HU')+' Ft/nap' }}},
+    scales: { x: xCat(), y: yVal(tickFt, false) }
   }
 });
 </script>
