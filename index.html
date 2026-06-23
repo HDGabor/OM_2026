@@ -155,7 +155,7 @@
 </div>
 
 <script>
-const projektek = ['Hóhelyzet', 'Betegőrző', 'Fúró', 'Képeslap', 'Mentőmotoros'];
+const projektek = [['Hóhelyzet','eSM3-26'], ['Betegőrző','eHM1-26'], ['Fúró','eHM2-26'], ['Képeslap','eSM5-26'], ['Mentőmotoros','eHM3-26']];
 const projColors = ['#185FA5','#0F6E56','#854F0B','#993556','#534AB7'];
 
 const d = {
@@ -185,7 +185,7 @@ function tickFt(v) {
 
 // Függőleges oszlopdiagram: x = kategória (projekt nevek lent), y = értékek bal oldalon
 function xCat() {
-  return { grid: { display: false }, ticks: { font: { size: 11 }, color: '#444', maxRotation: 20, minRotation: 0 } };
+  return { grid: { display: false }, ticks: { font: { size: 11 }, color: () => ['#444','#aaa'], maxRotation: 20, minRotation: 0 } };
 }
 function yVal(cb, stacked) {
   return { stacked: !!stacked, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#999', callback: cb } };
