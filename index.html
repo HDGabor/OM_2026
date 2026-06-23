@@ -151,7 +151,22 @@
   <p class="insight">A Mentőmotoros gyűjtés napi átlaga (47 725 Ft/nap) a legmagasabb a rövid, intenzív kampánynak köszönhetően. A Betegőrző 33 244 Ft/nap értékkel követi.</p>
 </div>
 
-<p style="font-size:11px;color:#ccc;text-align:right;margin-top:0.5rem;">Generálva: 2026-06-22</p>
+<div class="section">
+  <div class="section-title">Adományozók neme – feliratkozó vs. egyéb bontásban</div>
+  <div class="legend">
+    <span class="legend-item"><span class="legend-swatch" style="background:#c0398e"></span>Nő · feliratkozó</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#e6a4cc"></span>Nő · egyéb</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#1d5fa3"></span>Férfi · feliratkozó</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#9bc1e8"></span>Férfi · egyéb</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#bbb"></span>Ismeretlen nem</span>
+  </div>
+  <div class="chart-wrap" style="height:300px;">
+    <canvas id="genderBar" role="img" aria-label="Adományozók neme projektenként">Nők és férfiak száma projektenként, feliratkozó/egyéb bontásban.</canvas>
+  </div>
+  <p class="insight">A nemi besorolás a keresztnév alapján történt (gyakori magyar utónevek szótára + "-né" végződés szabály). A nem minden projektnél megállapítható volt a donorok kb. 85–88%-ánál, a fennmaradó rész "ismeretlen" kategóriába került. Minden projektnél a nők vannak többségben az adományozók között.</p>
+</div>
+
+<p style="font-size:11px;color:#ccc;text-align:right;margin-top:0.5rem;">Generálva: 2026-06-23</p>
 </div>
 
 <script>
@@ -171,6 +186,12 @@ const d = {
   total:        [2559525, 4454765, 2494542, 996000, 668150],
   hird:         [169630, 229552, 81242, 199881, 256266],
   napok:        [164, 134, 94, 50, 14],
+  no_fel:       [130, 296, 132, 173, 53],
+  no_egyeb:     [ 17,  16,  12,  11, 13],
+  ferfi_fel:    [ 72, 222, 122,  82, 33],
+  ferfi_egyeb:  [ 22,  25,  15,   4, 10],
+  ism_fel:      [ 38,  87,  45,  43, 14],
+  ism_egyeb:    [ 15,  10,   7,   4,  6],
 };
 
 function tickFt(v) {
@@ -285,6 +306,22 @@ new Chart(document.getElementById('dailyBar'), {
   options: { responsive: true, maintainAspectRatio: false,
     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+Math.round(ctx.parsed.y).toLocaleString('hu-HU')+' Ft/nap' }}},
     scales: { x: xCat(), y: yVal(tickFt, false) }
+  }
+});
+
+new Chart(document.getElementById('genderBar'), {
+  type: 'bar',
+  data: { labels: projektek, datasets: [
+    { label: 'Nő · feliratkozó',    data: d.no_fel,      backgroundColor: '#c0398e', stack: 'no',    borderRadius: 3, borderSkipped: false },
+    { label: 'Nő · egyéb',          data: d.no_egyeb,    backgroundColor: '#e6a4cc', stack: 'no',    borderRadius: 3, borderSkipped: false },
+    { label: 'Férfi · feliratkozó', data: d.ferfi_fel,   backgroundColor: '#1d5fa3', stack: 'ferfi', borderRadius: 3, borderSkipped: false },
+    { label: 'Férfi · egyéb',       data: d.ferfi_egyeb, backgroundColor: '#9bc1e8', stack: 'ferfi', borderRadius: 3, borderSkipped: false },
+    { label: 'Ismeretlen · feliratkozó', data: d.ism_fel,     backgroundColor: '#bbb', stack: 'ism', borderRadius: 3, borderSkipped: false },
+    { label: 'Ismeretlen · egyéb',       data: d.ism_egyeb,   backgroundColor: '#ddd', stack: 'ism', borderRadius: 3, borderSkipped: false }
+  ]},
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y===0?null:' '+ctx.dataset.label+': '+ctx.parsed.y+' fő' }}},
+    scales: { x: { ...xCat(), stacked: true }, y: { stacked: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 }, color: '#999' } } }
   }
 });
 </script>
