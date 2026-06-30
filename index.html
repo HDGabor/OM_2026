@@ -8,12 +8,12 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, -apple-system, sans-serif; background: #f8f7f4; color: #1a1a1a; padding: 2rem 1rem; }
-  .container { max-width: 960px; margin: 0 auto; }
+  .container { max-width: 1100px; margin: 0 auto; }
   h1 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.2rem; }
   .subtitle { font-size: 0.82rem; color: #888; margin-bottom: 2rem; }
   .section { background: #fff; border: 0.5px solid #e0ddd6; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
   .section-title { font-size: 0.75rem; font-weight: 500; color: #aaa; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
-  .summary-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
   .card { background: #fff; border: 0.5px solid #e0ddd6; border-radius: 8px; padding: 0.85rem 1rem; }
   .card-tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 4px; margin-bottom: 7px; }
   .card-value { font-size: 1rem; font-weight: 500; margin-bottom: 3px; }
@@ -32,38 +32,50 @@
 <div class="container">
 
 <h1>2026-os projektek összehasonlítása</h1>
-<p class="subtitle">5 projekt · adományozók, összegek, hirdetési költés · Forrás: adományok-2026-06-22.csv</p>
+<p class="subtitle">7 projekt · adományozók, összegek, hirdetési költés · Forrás: adományok-2026-06-30.csv</p>
 
 <div class="summary-grid">
   <div class="card">
     <div class="card-tag" style="background:#dce8f7;color:#0c447c;">Hóhelyzet</div>
     <div class="card-value">2 559 525 Ft</div>
-    <div class="card-sub">eSM3-26 · 294 adományozó · 327 tranzakció · 164 nap<br>2026.01.07 – 06.20.</div>
+    <div class="card-sub">eSM3-26 · 294 adományozó · 327 tranzakció · 163 nap<br>2026.01.07 – 06.20.</div>
     <div class="card-roi" style="color:#0c447c;">Hirdetés: 169 630 Ft · ROI: 6,18×</div>
   </div>
   <div class="card">
     <div class="card-tag" style="background:#e1f3e8;color:#085041;">Betegőrző</div>
-    <div class="card-value">4 454 765 Ft</div>
-    <div class="card-sub">eHM1-26 · 656 adományozó · 719 tranzakció · 134 nap<br>2026.02.05 – 06.19.</div>
+    <div class="card-value">4 457 765 Ft</div>
+    <div class="card-sub">eHM1-26 · 656 adományozó · 720 tranzakció · 137 nap<br>2026.02.05 – 06.23.</div>
     <div class="card-roi" style="color:#085041;">Hirdetés: 229 552 Ft · ROI: 1,97×</div>
   </div>
   <div class="card">
     <div class="card-tag" style="background:#faeeda;color:#633806;">Fúró</div>
-    <div class="card-value">2 494 542 Ft</div>
-    <div class="card-sub">eHM2-26 · 333 adományozó · 361 tranzakció · 94 nap<br>2026.03.20 – 06.22.</div>
+    <div class="card-value">2 509 542 Ft</div>
+    <div class="card-sub">eHM2-26 · 333 adományozó · 363 tranzakció · 99 nap<br>2026.03.20 – 06.27.</div>
     <div class="card-roi" style="color:#633806;">Hirdetés: 81 242 Ft · ROI: 2,63×</div>
   </div>
   <div class="card">
     <div class="card-tag" style="background:#fbeaf0;color:#72243e;">Képeslap</div>
-    <div class="card-value">996 000 Ft</div>
-    <div class="card-sub">eSM5-26 · 317 adományozó · 332 tranzakció · 50 nap<br>2026.04.29 – 06.18.</div>
-    <div class="card-roi" style="color:#72243e;">Hirdetés: 199 881 Ft · ROI: 0,42×</div>
+    <div class="card-value">1 002 000 Ft</div>
+    <div class="card-sub">eSM5-26 · 318 adományozó · 334 tranzakció · 62 nap<br>2026.04.29 – 06.30.</div>
+    <div class="card-roi" style="color:#72243e;">Hirdetés: 199 881 Ft · ROI: 0,45×</div>
   </div>
   <div class="card">
     <div class="card-tag" style="background:#eeedfe;color:#3c3489;">Mentőmotoros</div>
-    <div class="card-value">668 150 Ft</div>
-    <div class="card-sub">eHM3-26 · 129 adományozó · 133 tranzakció · 14 nap<br>2026.06.09 – 06.22.</div>
-    <div class="card-roi" style="color:#3c3489;">Hirdetés: 256 266 Ft · ROI: 0,76×</div>
+    <div class="card-value">1 761 649 Ft</div>
+    <div class="card-sub">eHM3-26 · 232 adományozó · 244 tranzakció · 21 nap<br>2026.06.09 – 06.30.</div>
+    <div class="card-roi" style="color:#3c3489;">Hirdetés: 282 957 Ft · ROI: 3,40×</div>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:#fdf3d9;color:#7a5c00;">Támogatáska</div>
+    <div class="card-value">1 374 001 Ft</div>
+    <div class="card-sub">eSM2-26 · 89 adományozó · 390 tranzakció · 259 nap<br>2025.10.13 – 2026.06.29.</div>
+    <div class="card-roi" style="color:#7a5c00;">Hirdetés: 193 045 Ft · ROI: 1,25×</div>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:#fde4e1;color:#a13a23;">Hőségriadó</div>
+    <div class="card-value">63 000 Ft</div>
+    <div class="card-sub">eSM7-26 · 15 adományozó · 15 tranzakció · 4 nap<br>2026.06.26 – 06.30.</div>
+    <div class="card-roi" style="color:#a13a23;">Hirdetés: 45 126 Ft · ROI: 1,17×</div>
   </div>
 </div>
 
@@ -74,9 +86,9 @@
     <span class="legend-item"><span class="legend-swatch" style="background:#e07b39"></span>Egyéb forrás</span>
   </div>
   <div class="chart-wrap" style="height:280px;">
-    <canvas id="totalBar" role="img" aria-label="Összes bevétel projektenként">5 projekt bevétele.</canvas>
+    <canvas id="totalBar" role="img" aria-label="Összes bevétel projektenként">7 projekt bevétele.</canvas>
   </div>
-  <p class="insight">A Betegőrző monitorok projekt gyűjtötte a legtöbb pénzt (4,45 M Ft). A Mentőmotoros gyűjtés mindössze 14 nap alatt gyűjtötte a 668 150 Ft-ot.</p>
+  <p class="insight">A Betegőrző monitorok projekt gyűjtötte a legtöbb pénzt (4,46 M Ft). A Hőségriadó csak 4 napja indult, eddig 63 000 Ft gyűlt össze.</p>
 </div>
 
 <div class="section">
@@ -88,7 +100,7 @@
   <div class="chart-wrap" style="height:280px;">
     <canvas id="roiBar" role="img" aria-label="Bevétel és hirdetési költés projektenként">Bevétel és hirdetési költés összehasonlítása.</canvas>
   </div>
-  <p class="insight">A hirdetési költés az egyéb forrásból érkező adományokat hozza. A Hóhelyzet és Betegőrző projektek esetén az egyéb bevétel meghaladja a hirdetési kiadást. A Képeslapnál és Mentőmotorosnál fordított az arány — a hirdetési büdzsé több volt, mint az általa hozott egyéb bevétel.</p>
+  <p class="insight">A hirdetési költés az egyéb forrásból érkező adományokat hozza. A Hóhelyzet, Mentőmotoros és Fúró projekteknél az egyéb bevétel meghaladja a hirdetési kiadást. A Képeslapnál fordított az arány — a hirdetési büdzsé több volt, mint az általa hozott egyéb bevétel.</p>
 </div>
 
 <div class="section">
@@ -96,7 +108,7 @@
   <div class="chart-wrap" style="height:260px;">
     <canvas id="roiRatioBar" role="img" aria-label="Hirdetési ROI projektenként">ROI értékek projektenként.</canvas>
   </div>
-  <p class="insight">A ROI itt az egyéb forrásból érkező bevételt osztja a hirdetési költéssel, mivel a hirdetések jellemzően nem feliratkozókat, hanem új adományozókat hoznak. A Hóhelyzet (6,18×) és Fúró (2,63×) projektek térültek meg legjobban, a Betegőrző (1,97×) is megtérült. A Képeslap (0,42×) és Mentőmotoros (0,76×) projekteknél a hirdetési költés meghaladta az egyéb forrásból érkező bevételt — ugyanakkor ezek a kampányok a feliratkozói bázis aktiválásában is értéket teremthetnek.</p>
+  <p class="insight">A ROI itt az egyéb forrásból érkező bevételt osztja a hirdetési költséggel, mivel a hirdetések jellemzően nem feliratkozókat, hanem új adományozókat hoznak. A Hóhelyzet (6,18×) és Mentőmotoros (3,40×) projektek térültek meg legjobban, ezt követi a Fúró (2,63×) és Betegőrző (1,97×). A Támogatáska (1,25×) és Hőségriadó (1,17×) hirdetése nagyjából megtérült. A Képeslapnál (0,45×) a hirdetési költés meghaladta az egyéb forrásból érkező bevételt.</p>
 </div>
 
 <div class="section">
@@ -108,7 +120,7 @@
   <div class="chart-wrap" style="height:280px;">
     <canvas id="donorsBar" role="img" aria-label="Adományozók száma projektenként">Adományozók száma feliratkozó és egyéb bontásban.</canvas>
   </div>
-  <p class="insight">A feliratkozók aránya minden projektnél magas: Képeslap 94%, Betegőrző 92%, Fúró 90%, Hóhelyzet 82%, Mentőmotoros 78%.</p>
+  <p class="insight">A feliratkozók aránya a legtöbb projektnél magas: Képeslap 94%, Betegőrző 92%, Fúró 90%, Hóhelyzet 82%, Támogatáska 81%, Mentőmotoros 61%. A Hőségriadónál ez fordított: a friss, induló kampány eddig elsősorban új (nem feliratkozó) adományozókat hozott (13%).</p>
 </div>
 
 <div class="section">
@@ -128,7 +140,7 @@
   <div class="chart-wrap" style="height:280px;">
     <canvas id="payBar" role="img" aria-label="Fizetési módok összeg szerint projektenként">Bankkártya, átutalás, csekk összegek projektenként.</canvas>
   </div>
-  <p class="insight">A Betegőrző monitoros projektnél az átutalás aránya kiemelkedően magas (24%). A bankkártya mindenhol domináns (76–92%).</p>
+  <p class="insight">A Betegőrző monitoros projektnél az átutalás aránya kiemelkedően magas (24%). A bankkártya a legtöbb projektnél domináns.</p>
 </div>
 
 <div class="section">
@@ -148,7 +160,7 @@
   <div class="chart-wrap" style="height:260px;">
     <canvas id="dailyBar" role="img" aria-label="Napi átlagos bevétel projektenként">Napi átlagos bevétel összehasonlítása.</canvas>
   </div>
-  <p class="insight">A Mentőmotoros gyűjtés napi átlaga (47 725 Ft/nap) a legmagasabb a rövid, intenzív kampánynak köszönhetően. A Betegőrző 33 244 Ft/nap értékkel követi.</p>
+  <p class="insight">A Mentőmotoros gyűjtés napi átlaga (83 888 Ft/nap) kiugróan a legmagasabb a jelenleg is zajló, intenzív kampánynak köszönhetően. A Betegőrző 32 538 Ft/nap értékkel követi.</p>
 </div>
 
 <div class="section">
@@ -163,35 +175,35 @@
   <div class="chart-wrap" style="height:300px;">
     <canvas id="genderBar" role="img" aria-label="Adományozók neme projektenként">Nők és férfiak száma projektenként, feliratkozó/egyéb bontásban.</canvas>
   </div>
-  <p class="insight">A nemi besorolás a keresztnév alapján történt (gyakori magyar utónevek szótára + "-né" végződés szabály), a Keresztnév/Vezetéknév mezők esetenkénti felcserélődését is figyelembe véve. A nem így a donorok kb. 92–98%-ánál megállapítható volt, a fennmaradó rész "ismeretlen" kategóriába került. Minden projektnél a nők vannak többségben az adományozók között.</p>
+  <p class="insight">A nemi besorolás a keresztnév alapján történt (gyakori magyar utónevek szótára + "-né" végződés szabály), a Keresztnév/Vezetéknév mezők esetenkénti felcserélődését is figyelembe véve. A nem így a donorok kb. 92–100%-ánál megállapítható volt, a fennmaradó rész "ismeretlen" kategóriába került. Minden projektnél a nők vannak többségben az adományozók között.</p>
 </div>
 
-<p style="font-size:11px;color:#ccc;text-align:right;margin-top:0.5rem;">Generálva: 2026-06-23</p>
+<p style="font-size:11px;color:#ccc;text-align:right;margin-top:0.5rem;">Generálva: 2026-06-30</p>
 </div>
 
 <script>
-const projektek = [['Hóhelyzet','eSM3-26'], ['Betegőrző','eHM1-26'], ['Fúró','eHM2-26'], ['Képeslap','eSM5-26'], ['Mentőmotoros','eHM3-26']];
-const projColors = ['#185FA5','#0F6E56','#854F0B','#993556','#534AB7'];
+const projektek = [['Hóhelyzet','eSM3-26'], ['Betegőrző','eHM1-26'], ['Fúró','eHM2-26'], ['Képeslap','eSM5-26'], ['Mentőmotoros','eHM3-26'], ['Támogatáska','eSM2-26'], ['Hőségriadó','eSM7-26']];
+const projColors = ['#185FA5','#0F6E56','#854F0B','#993556','#534AB7','#A07E00','#C0392B'];
 
 const d = {
-  fel_összeg:   [1512005, 4002402, 2281042,  912000, 472650],
-  egyeb_összeg: [1047520,  452363,  213500,   84000, 195500],
-  fel_fő:       [240, 605, 299, 298, 100],
-  egyeb_fő:     [ 54,  51,  34,  19,  29],
-  bank:         [1959000, 3183348, 2284542, 797000, 555150],
-  atur:         [ 486500, 1079702,  153500, 158000,  74000],
-  csekk:        [ 114025,  191715,   56500,  41000,  39000],
-  avg_fel:      [5579, 6010, 7040, 2923, 4634],
-  avg_egyeb:    [18706, 8535, 5770, 4200, 6306],
-  total:        [2559525, 4454765, 2494542, 996000, 668150],
-  hird:         [169630, 229552, 81242, 199881, 256266],
-  napok:        [164, 134, 94, 50, 14],
-  no_fel:       [142, 331, 148, 196, 58],
-  no_egyeb:     [ 21,  19,  13,  13, 16],
-  ferfi_fel:    [ 82, 243, 137,  91, 39],
-  ferfi_egyeb:  [ 25,  27,  16,   5, 11],
-  ism_fel:      [ 16,  31,  14,  11,  3],
-  ism_egyeb:    [  8,   5,   5,   1,  2],
+  fel_összeg:   [1512005, 4005402, 2296042,  912000,  798650, 1133000,  10000],
+  egyeb_összeg: [1047520,  452363,  213500,   90000,  962999,  241001,  53000],
+  fel_fő:       [240, 605, 299, 298, 142, 72,  2],
+  egyeb_fő:     [ 54,  51,  34,  20,  90, 17, 13],
+  bank:         [1959000, 3186348, 2299542, 802000, 1557649, 1360000, 55000],
+  atur:         [ 486500, 1079702,  153500, 159000,  147000,   10000,  8000],
+  csekk:        [ 114025,  191715,   56500,  41000,   57000,    4001,     0],
+  avg_fel:      [5579, 6005, 7043, 2923, 5360, 3402, 5000],
+  avg_egyeb:    [18706, 8535, 5770, 4091, 10137, 4228, 4077],
+  total:        [2559525, 4457765, 2509542, 1002000, 1761649, 1374001, 63000],
+  hird:         [169630, 229552, 81242, 199881, 282957, 193045, 45126],
+  napok:        [163, 137, 99, 62, 21, 259, 4],
+  no_fel:       [142, 331, 148, 196, 82, 48, 1],
+  no_egyeb:     [ 21,  19,  13,  13, 65, 10, 12],
+  ferfi_fel:    [ 82, 243, 137,  91, 57, 22,  1],
+  ferfi_egyeb:  [ 25,  27,  16,   5, 21,  4,  1],
+  ism_fel:      [ 16,  31,  14,  11,  3,  2,  0],
+  ism_egyeb:    [  8,   5,   5,   2,  4,  3,  0],
 };
 
 function tickFt(v) {
