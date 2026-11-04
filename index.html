@@ -7,27 +7,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, -apple-system, sans-serif; background: #f8f7f4; color: #1a1a1a; padding: 2rem 1rem; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #0d0d13; color: #d2d0de; padding: 2rem 1rem; }
   .container { max-width: 1200px; margin: 0 auto; }
-  h1 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.2rem; }
-  .subtitle { font-size: 0.82rem; color: #888; margin-bottom: 2rem; }
-  .section { background: #fff; border: 0.5px solid #e0ddd6; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
-  .section-title { font-size: 0.75rem; font-weight: 500; color: #aaa; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
-  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 10px; margin-bottom: 0.75rem; }
-  .card { background: #fff; border: 0.5px solid #e0ddd6; border-radius: 8px; padding: 0.85rem 1rem; }
+  .header { display: flex; align-items: center; gap: 14px; margin-bottom: 0.3rem; }
+  .logo-wrap { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-text-main { font-size: 0.72rem; font-weight: 600; color: #1db836; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.3; }
+  .logo-text-sub  { font-size: 0.6rem; color: #4a4860; letter-spacing: 0.04em; }
+  h1 { font-size: 1.1rem; font-weight: 500; color: #d2d0de; }
+  .subtitle { font-size: 0.78rem; color: #4a4860; margin-bottom: 1.75rem; margin-top: 0.15rem; }
+  .section { background: #131319; border: 0.5px solid #252538; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+  .section-title { font-size: 0.72rem; font-weight: 500; color: #4a4860; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; margin-bottom: 1.25rem; }
+  .card { background: #18181f; border: 0.5px solid #252538; border-radius: 8px; padding: 0.85rem 1rem; }
   .card-tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 4px; margin-bottom: 7px; }
   .card-value { font-size: 1rem; font-weight: 500; margin-bottom: 3px; }
-  .card-sub { font-size: 11px; color: #bbb; line-height: 1.5; }
-  .card-roi { font-size: 11px; font-weight: 500; margin-top: 5px; }
-  .summary-row { background: #fff; border: 0.5px solid #e0ddd6; border-radius: 8px; padding: 0.85rem 1.1rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; align-items: center; }
+  .card-sub { font-size: 10.5px; color: #4a4860; line-height: 1.55; }
+  .card-roi { font-size: 10.5px; font-weight: 500; margin-top: 5px; }
+  .summary-row { background: #18181f; border: 0.5px solid #252538; border-radius: 8px; padding: 0.9rem 1.2rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; }
   .summary-row-item { display: flex; flex-direction: column; gap: 2px; }
-  .summary-row-label { font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; }
+  .summary-row-label { font-size: 9.5px; color: #4a4860; text-transform: uppercase; letter-spacing: 0.05em; }
   .summary-row-value { font-size: 0.95rem; font-weight: 500; }
+  .summary-row-value.accent { color: #1db836; }
   .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem; }
-  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #555; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: #7a7898; }
   .legend-swatch { width: 11px; height: 11px; border-radius: 2px; flex-shrink: 0; }
   .chart-wrap { position: relative; width: 100%; }
-  .insight { font-size: 13px; color: #666; line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid #ede9e2; }
+  .insight { font-size: 12.5px; color: #5a5878; line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid #1e1e2a; }
+  .nem-adom-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .nem-adom-table th { text-align: left; padding: 6px 10px; font-size: 10px; color: #4a4860; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.5px solid #252538; }
+  .nem-adom-table td { padding: 10px 10px; border-bottom: 0.5px solid #1e1e2a; color: #d2d0de; }
+  .nem-adom-table tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 4px; background: #1e1e2a; color: #7a7898; }
+  .total-row td { font-weight: 500; color: #1db836 !important; border-top: 0.5px solid #252538; }
   @media (max-width: 700px) { .summary-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 400px) { .summary-grid { grid-template-columns: 1fr; } }
 </style>
@@ -35,378 +47,348 @@
 <body>
 <div class="container">
 
-<h1>2026-os projektek összehasonlítása</h1>
-<p class="subtitle">10 projekt · csak bankkártyás befizetések · Forrás: adományok-2026-10-05.csv · feliratkozók: Mailchimp + vállalati Mailchimp + Brevo (eHM4-26, eHM5-26)</p>
+<div class="header">
+  <div class="logo-wrap">
+    <svg width="36" height="36" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M101.294 58.3506C98.9234 76.6419 81.6592 95.6049 57.0469 95.6049C34.0938 95.6049 21.2148 80.7506 17.5012 64.6321C20.2667 75.0617 32.5926 90.5481 56.7309 90.5481C80.9086 90.5876 98.8444 75.7728 101.294 58.3506Z" fill="#1db836"/>
+      <path d="M72.6519 20.1086C71.1111 19.1605 61.8272 13.2741 58.1531 17.4617C54.558 21.5704 59.8519 24.0198 53.2938 26.1926C53.2938 26.1926 54.321 29.6691 55.8617 30.3802C57.4025 31.1309 58.1531 31.2099 58.5877 31.4864C59.3383 31.921 59.8914 41.442 57.8371 41.521C55.1111 41.6395 55.9803 40.9679 51.279 41.758C42.7457 43.1802 42.6667 43.4568 45.6691 40.0988C46.3803 39.3086 54.4 32.079 54.4 32.079C54.4 32.079 51.2395 26.7062 42.6667 27.6148C36.4247 28.2469 31.9605 30.2617 27.3383 35.3185C22.9926 40.0593 25.7185 50.1333 25.7185 50.1333C25.7185 50.1333 20.2667 52.1086 17.5012 56.8099C16.6321 58.2716 24.0198 61.1951 32.9087 58.6272C32.9087 58.6272 36.0296 59.3778 38.2815 59.3778C43.1408 59.4173 42.3506 61.5506 40.1383 62.4198C38.5185 63.0518 36.3062 63.4074 36.3062 63.4074C36.3062 63.4074 35.042 66.1728 33.4617 69.0963C31.6445 72.4543 29.4716 75.3383 29.6691 76.4444C29.8272 77.3531 34.3704 83.6741 35.7136 82.5679C37.0568 81.4617 31.3679 79.2889 32.237 76.0889C33.1062 72.7704 36.3852 68.3457 38.7556 65.7383C40.0198 64.3555 53.1358 61.4716 53.7284 63.2889C53.9654 63.9605 52.5037 64.9876 52.2667 65.6593C51.4371 67.9901 49.8173 70.5975 49.8173 70.5975C49.8173 70.5975 53.1358 79.0123 53.6889 80.8296C54.242 82.6074 54.479 83.2 55.9408 83.7531C57.8371 84.4642 63.8815 85.0963 63.6445 83.3975C63.4469 82.1728 58.9037 83.516 56.4543 80.8691C53.7284 77.9062 53.0963 71.3086 54.084 69.2148C56.4938 64.1185 63.7235 63.6839 68.5432 60.1284C71.4667 57.9951 74.7852 51.3185 73.7976 43.0617C73.0864 36.8593 68.8593 33.4222 67.5161 25.0469C67.042 22.084 72.2173 21.7679 72.2173 21.7679C72.2173 21.7679 68.3852 20.9778 68.4247 20.8198C68.5432 20.3852 72.6519 20.1086 72.6519 20.1086Z" fill="#d2d0de"/>
+      <path d="M70.163 19.8717C70.163 19.8717 66.1333 16.6322 60.8395 17.0667C57.9951 17.3038 57.9951 21.2149 58.3901 21.9655C58.8247 22.7951 60.6815 22.2025 60.721 22.7556C60.7605 23.1507 60.2864 24.3754 58.8247 24.7309C57.4025 25.0865 54.2025 27.1803 57.2444 28.8001C59.8914 30.1828 61.1556 28.0889 61.6691 27.4173C62.8938 25.7976 62.9728 24.3359 64.4346 23.3482C65.8568 22.4001 69.2938 21.5309 69.2938 21.5309L67.1605 20.8198L70.163 19.8717Z" fill="#252538"/>
+      <path d="M65.4222 26.8643C65.4222 26.8643 67.6346 33.3038 69.4124 37.1754C70.8346 40.2568 71.0321 44.8001 69.6494 45.5507C69.0568 45.8667 68.3457 41.7186 65.0667 39.6248C61.6296 37.4124 61.0766 36.4643 61.2741 33.8964C61.5506 29.5112 65.4222 26.8643 65.4222 26.8643Z" fill="#252538"/>
+    </svg>
+    <div class="logo-text">
+      <span class="logo-text-main">OMSZA</span>
+      <span class="logo-text-sub">Mentőalapítvány</span>
+    </div>
+  </div>
+  <h1>2026-os projektek összehasonlítása</h1>
+</div>
+<p class="subtitle">11 projekt · csak bankkártyás befizetések · Forrás: adomanyok-2026-11-04.csv · feliratkozók: Mailchimp + Brevo (eHM4–eHM6, eSM11)</p>
 
 <div class="summary-grid">
-  <div class="card" style="border-color:#d4d0ca;">
-    <div class="card-tag" style="background:#f0ede8;color:#666;">Egyéb 2026</div>
-    <div class="card-value">881 900 Ft</div>
-    <div class="card-sub">68 adományozó · 102 tranzakció<br>2026.01.01 – 10.05. · üres projektmező</div>
+  <div class="card" style="border-color:#252538;">
+    <div class="card-tag" style="background:#1a1a26;color:#5a5878;">Egyéb 2026</div>
+    <div class="card-value">2 760 739 Ft</div>
+    <div class="card-sub">207 adományozó · 418 tranzakció<br>2026.01.01 – 11.04. · üres projektmező</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#dce8f7;color:#0c447c;">Hóhelyzet</div>
-    <div class="card-value">2 000 000 Ft</div>
-    <div class="card-sub">eSM3-26 · 241 adományozó · 285 tranzakció · 257 nap<br>2026.01.07 – 09.20.</div>
-    <div class="card-roi" style="color:#0c447c;">Hirdetés: 169 630 Ft · ROI: 3,29×</div>
+    <div class="card-tag" style="background:#152040;color:#5b9bd5;">Hóhelyzet</div>
+    <div class="card-value">2 013 000 Ft</div>
+    <div class="card-sub">eSM3-26 · 241 adományozó · 285 tranzakció · 286 nap<br>2026.01.07 – 10.20.</div>
+    <div class="card-roi" style="color:#5b9bd5;">Hirdetés: 169 630 Ft · ROI: 3,29×</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#e1f3e8;color:#085041;">Betegőrző</div>
-    <div class="card-value">3 370 348 Ft</div>
-    <div class="card-sub">eHM1-26 · 530 adományozó · 598 tranzakció · 239 nap<br>2026.02.05 – 10.02.</div>
-    <div class="card-roi" style="color:#085041;">Hirdetés: 254 941 Ft · ROI: 0,82×</div>
+    <div class="card-tag" style="background:#0e2520;color:#2ecc89;">Betegőrző</div>
+    <div class="card-value">3 420 348 Ft</div>
+    <div class="card-sub">eHM1-26 · 532 adományozó · 601 tranzakció · 271 nap<br>2026.02.05 – 11.02.</div>
+    <div class="card-roi" style="color:#2ecc89;">Hirdetés: 254 941 Ft · ROI: 0,83×</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#faeeda;color:#633806;">Fúró</div>
-    <div class="card-value">2 489 042 Ft</div>
-    <div class="card-sub">eHM2-26 · 305 adományozó · 349 tranzakció · 197 nap<br>2026.03.20 – 10.03.</div>
-    <div class="card-roi" style="color:#633806;">Hirdetés: 131 226 Ft · ROI: 2,13×</div>
+    <div class="card-tag" style="background:#281b0a;color:#e8973e;">Fúró</div>
+    <div class="card-value">2 616 542 Ft</div>
+    <div class="card-sub">eHM2-26 · 321 adományozó · 361 tranzakció · 225 nap<br>2026.03.20 – 11.01.</div>
+    <div class="card-roi" style="color:#e8973e;">Hirdetés: 131 226 Ft · ROI: 2,76×</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#fbeaf0;color:#72243e;">Képeslap</div>
-    <div class="card-value">918 000 Ft</div>
-    <div class="card-sub">eSM5-26 · 246 adományozó · 281 tranzakció · 155 nap<br>2026.04.29 – 10.01.</div>
-    <div class="card-roi" style="color:#72243e;">Hirdetés: 199 881 Ft · ROI: 0,59×</div>
+    <div class="card-tag" style="background:#281020;color:#d46a88;">Képeslap</div>
+    <div class="card-value">938 000 Ft</div>
+    <div class="card-sub">eSM5-26 · 246 adományozó · 282 tranzakció · 184 nap<br>2026.04.29 – 10.30.</div>
+    <div class="card-roi" style="color:#d46a88;">Hirdetés: 199 881 Ft · ROI: 0,61×</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#eeedfe;color:#3c3489;">Mentőmotoros</div>
-    <div class="card-value">2 959 399 Ft</div>
-    <div class="card-sub">eHM3-26 · 435 adományozó · 490 tranzakció · 118 nap<br>2026.06.09 – 10.05.</div>
-    <div class="card-roi" style="color:#3c3489;">Hirdetés: 561 433 Ft · ROI: 2,98×</div>
+    <div class="card-tag" style="background:#160e3a;color:#8878e8;">Csomagtartó</div>
+    <div class="card-value">3 006 399 Ft</div>
+    <div class="card-sub">eHM3-26 · 435 adományozó · 503 tranzakció · 148 nap<br>2026.06.09 – 11.04.</div>
+    <div class="card-roi" style="color:#8878e8;">Hirdetés: 216 559 Ft · ROI: 7,87×</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#fdf3d9;color:#7a5c00;">Támogatáska</div>
-    <div class="card-value">2 148 994 Ft</div>
-    <div class="card-sub">eSM2-26 · 155 adományozó · 606 tranzakció · 2026-ban 274 nap<br>2025.10.13 – 2026.10.01.</div>
-    <div class="card-roi" style="color:#7a5c00;">Hirdetés: 835 478 Ft · ROI: 0,80×</div>
+    <div class="card-tag" style="background:#251c05;color:#d4a822;">Támogatáska</div>
+    <div class="card-value">2 561 992 Ft</div>
+    <div class="card-sub">eSM2-26 · 177 adományozó · 606 tranzakció · 304 nap<br>2026.01.01 – 11.01.</div>
+    <div class="card-roi" style="color:#d4a822;">Hirdetés: 835 478 Ft · ROI: 1,04×</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#fde4e1;color:#a13a23;">Hőségriadó</div>
+    <div class="card-tag" style="background:#280f0a;color:#e85540;">Hőségriadó</div>
     <div class="card-value">552 000 Ft</div>
-    <div class="card-sub">eSM7-26 · 80 adományozó · 80 tranzakció · 52 nap<br>2026.06.27 – 08.17.</div>
-    <div class="card-roi" style="color:#a13a23;">Hirdetés: 129 927 Ft · ROI: 3,80×</div>
+    <div class="card-sub">eSM7-26 · 80 adományozó · 80 tranzakció · 42 nap<br>2026.06.27 – 08.08.</div>
+    <div class="card-roi" style="color:#e85540;">Hirdetés: 129 927 Ft · ROI: 3,80×</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#e2f5e9;color:#155a34;">Zöld táska</div>
-    <div class="card-value">3 606 600 Ft</div>
-    <div class="card-sub">eHM4-26 · 609 adományozó · 633 tranzakció · 60 nap<br>2026.08.04 – 10.02.</div>
-    <div class="card-roi" style="color:#155a34;">Hirdetés: 600 815 Ft · ROI: 3,47×</div>
+    <div class="card-tag" style="background:#0e2818;color:#3dba68;">Zöld táska</div>
+    <div class="card-value">3 672 100 Ft</div>
+    <div class="card-sub">eHM4-26 · 609 adományozó · 633 tranzakció · 90 nap<br>2026.08.04 – 11.01.</div>
+    <div class="card-roi" style="color:#3dba68;">Hirdetés: 600 815 Ft · ROI: 3,51×</div>
   </div>
   <div class="card">
-    <div class="card-tag" style="background:#efebe9;color:#4e342e;">CO-mérő</div>
-    <div class="card-value">478 500 Ft</div>
-    <div class="card-sub">eHM5-26 · 94 adományozó · 95 tranzakció · 17 nap<br>2026.09.19 – 10.05.</div>
-    <div class="card-roi" style="color:#4e342e;">Hirdetés: 158 517 Ft · ROI: 1,06×</div>
+    <div class="card-tag" style="background:#1e1510;color:#9c8070;">CO-mérő</div>
+    <div class="card-value">891 000 Ft</div>
+    <div class="card-sub">eHM5-26 · 174 adományozó · 183 tranzakció · 42 nap<br>2026.09.19 – 10.31.</div>
+    <div class="card-roi" style="color:#9c8070;">Hirdetés: 158 517 Ft · ROI: 2,38×</div>
+  </div>
+  <div class="card" style="border-color:#1a3030;">
+    <div class="card-tag" style="background:#0e2828;color:#38c9d4;">LUCAS 3</div>
+    <div class="card-value">679 999 Ft</div>
+    <div class="card-sub">eSM11-26 · 104 adományozó · 120 tranzakció · 14 nap<br>2026.10.21 – 11.04. · új projekt</div>
+    <div class="card-roi" style="color:#38c9d4;">Hirdetés: 295 048 Ft · ROI: 2,20×</div>
+  </div>
+  <div class="card" style="border-color:#301828;">
+    <div class="card-tag" style="background:#281020;color:#d46cb0;">Húzósín</div>
+    <div class="card-value">499 000 Ft</div>
+    <div class="card-sub">eHM6-26 · 51 adományozó · 60 tranzakció · 12 nap<br>2026.10.22 – 11.03. · új projekt</div>
+    <div class="card-roi" style="color:#d46cb0;">Hirdetés: 167 390 Ft · ROI: 1,63×</div>
   </div>
 </div>
 
 <div class="summary-row">
   <div class="summary-row-item">
-    <span class="summary-row-label">Összes adománybevétel 2026</span>
-    <span class="summary-row-value">19 404 783 Ft</span>
+    <span class="summary-row-label">Összes bankkártyás bevétel (11 proj.)</span>
+    <span class="summary-row-value">20 850 380 Ft</span>
   </div>
   <div class="summary-row-item">
-    <span class="summary-row-label">Ebből hirdetésből</span>
-    <span class="summary-row-value">6 652 167 Ft</span>
+    <span class="summary-row-label">Ebből e-mailből (feliratkozók)</span>
+    <span class="summary-row-value">13 120 114 Ft</span>
   </div>
   <div class="summary-row-item">
-    <span class="summary-row-label">E-mailből</span>
-    <span class="summary-row-value">12 752 616 Ft</span>
+    <span class="summary-row-label">Egyéb forrásból</span>
+    <span class="summary-row-value">7 730 266 Ft</span>
+  </div>
+  <div class="summary-row-item">
+    <span class="summary-row-label">Adománygyűjtő hirdetési költés</span>
+    <span class="summary-row-value">3 159 412 Ft</span>
+  </div>
+  <div class="summary-row-item">
+    <span class="summary-row-label">Nem adománygyűjtő hirdetés</span>
+    <span class="summary-row-value" style="color:#e8973e;">+ 689 213 Ft</span>
   </div>
   <div class="summary-row-item">
     <span class="summary-row-label">Összes hirdetési költés</span>
-    <span class="summary-row-value">3 041 848 Ft</span>
+    <span class="summary-row-value">3 848 625 Ft</span>
   </div>
   <div class="summary-row-item">
-    <span class="summary-row-label">Éves Meta hirdetési keret</span>
+    <span class="summary-row-label">Éves Meta keret</span>
     <span class="summary-row-value">11 760 000 Ft</span>
   </div>
   <div class="summary-row-item">
-    <span class="summary-row-label">Maradék hirdetési keret</span>
-    <span class="summary-row-value">8 718 152 Ft</span>
+    <span class="summary-row-label">Maradék keret</span>
+    <span class="summary-row-value accent">7 911 375 Ft</span>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">Összes bevétel projektenként (bankkártya)</div>
+  <div class="section-title">Összes bevétel projektenként (bankkártya) · feliratkozó vs. egyéb forrás</div>
   <div class="legend">
-    <span class="legend-item"><span class="legend-swatch" style="background:#3266ad"></span>Feliratkozó</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#e07b39"></span>Egyéb forrás</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#3a7bd5"></span>Feliratkozó (e-mail lista)</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#e07b39"></span>Egyéb forrás (hirdetés stb.)</span>
   </div>
-  <div class="chart-wrap" style="height:300px;">
+  <div class="chart-wrap" style="height:320px;">
     <canvas id="totalBar"></canvas>
   </div>
-  <p class="insight">A Zöld táska projekt vezet (3,61 M Ft, 60 nap), megelőzve a Betegőrzőt (3,37 M Ft). A CO-mérő induló 17 napjában 478 500 Ft-ot gyűjtött.</p>
+  <p class="insight">A Zöld táska vezet (3,67 M Ft, 90 nap alatt), megelőzve a Betegőrzőt (3,42 M Ft). A Csomagtartó (eHM3-26) 148 nap alatt 3,01 M Ft-ot gyűjtött – ebből 57% egyéb forrásból érkezett, ami kiemelkedő hirdetési hatékonyságot jelez. Az új LUCAS 3 projekt 14 nap alatt 680 ezer, a Húzósín 12 nap alatt 499 ezer Ft-ot ért el.</p>
 </div>
 
 <div class="section">
   <div class="section-title">Bevétel vs. hirdetési költés (bankkártya)</div>
   <div class="legend">
-    <span class="legend-item"><span class="legend-swatch" style="background:#3266ad"></span>Egyéb bevétel</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#e24b4a"></span>Hirdetési költés</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#3a7bd5"></span>Bankkártyás bevétel</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#e84a4a"></span>Hirdetési költés</span>
   </div>
-  <div class="chart-wrap" style="height:300px;">
+  <div class="chart-wrap" style="height:320px;">
     <canvas id="roiBar"></canvas>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">Hirdetési ROI (1 Ft hirdetésre jutó bankkártyás bevétel)</div>
-  <div class="chart-wrap" style="height:280px;">
+  <div class="section-title">Hirdetési ROI (egyéb forrású bevétel / hirdetési költés)</div>
+  <div class="chart-wrap" style="height:300px;">
     <canvas id="roiRatioBar"></canvas>
   </div>
-  <p class="insight">A Hőségriadó (3,80×), Zöld táska (3,47×) és Hóhelyzet (3,29×) vezet. A CO-mérő induló ROI-ja 1,06× — rendkívül erős nyitás. A Betegőrző (0,82×), Képeslap (0,59×) és Támogatáska (0,80×) esetén az egyéb bevétel nem fedezi a hirdetési kiadást, de az ismétlődő és átutalásos bevételek javítanak a képen.</p>
+  <p class="insight">A Csomagtartó (eHM3-26) ROI-ja 7,87× – kiemelkedő, és a 11-projekt átlag (2,97×) duplája felett van. A Hőségriadó (3,80×), Zöld táska (3,51×), Hóhelyzet (3,29×) és Fúró (2,76×) szintén erős. Az új LUCAS 3 (2,20×) és Húzósín (1,63×) rövid futásidőhöz képest biztató. A Képeslap (0,61×) és Betegőrző (0,83×) egyéb bevétele nem fedezi a hirdetési kiadást, de az e-maillista részaránya mindkét projektnél magas (93% ill. 94%).</p>
 </div>
 
 <div class="section">
-  <div class="section-title">Adományozók száma – feliratkozó vs. egyéb (bankkártya)</div>
+  <div class="section-title">Átlagos adomány: feliratkozók vs. egyéb (Ft/tranzakció)</div>
   <div class="legend">
-    <span class="legend-item"><span class="legend-swatch" style="background:#3266ad"></span>Feliratkozó (Mailchimp + vállalati + Brevo)</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#e07b39"></span>Egyéb forrás</span>
-  </div>
-  <div class="chart-wrap" style="height:300px;">
-    <canvas id="donorsBar"></canvas>
-  </div>
-  <p class="insight">Feliratkozói arány: Képeslap 94%, Betegőrző 92%, Fúró 87%, Hóhelyzet 87%, CO-mérő 65%, Támogatáska 57%, Mentőmotoros 51%, Zöld táska 40%, Hőségriadó 15%.</p>
-</div>
-
-<div class="section">
-  <div class="section-title">Feliratkozók aránya az összes adományozóból (%)</div>
-  <div class="chart-wrap" style="height:280px;">
-    <canvas id="ratioBar"></canvas>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">Vállalati adományok projektenként (bankkártya)</div>
-  <div class="legend">
-    <span class="legend-item"><span class="legend-swatch" style="background:#2E4057"></span>Vállalati adomány</span>
-  </div>
-  <div class="chart-wrap" style="height:280px;">
-    <canvas id="corpBar"></canvas>
-  </div>
-  <p class="insight">A Mentőmotoros (147 000 Ft), Zöld táska (163 000 Ft) és Hóhelyzet (133 000 Ft) vezet vállalati adományokban. A CO-mérő induló 17 napjában 33 000 Ft vállalati adomány érkezett 4 vállalattól.</p>
-</div>
-
-<div class="section">
-  <div class="section-title">Fizetési módok – összeg megoszlása (minden fizetési mód)</div>
-  <div class="legend">
-    <span class="legend-item"><span class="legend-swatch" style="background:#3266ad"></span>Bankkártya</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#6fa8dc"></span>Átutalás</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#a4c2f4"></span>Csekk</span>
-  </div>
-  <div class="chart-wrap" style="height:300px;">
-    <canvas id="payBar"></canvas>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">Átlagos adomány tranzakciónként – bankkártya (Ft)</div>
-  <div class="legend">
-    <span class="legend-item"><span class="legend-swatch" style="background:#3266ad"></span>Feliratkozó</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#e07b39"></span>Egyéb forrás</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#3a7bd5"></span>Feliratkozók átlag</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#e07b39"></span>Egyéb adományozók átlag</span>
   </div>
   <div class="chart-wrap" style="height:300px;">
     <canvas id="avgBar"></canvas>
   </div>
+  <p class="insight">A Hóhelyzet egyéb adományozóinak átlaga (18 016 Ft) messze kiemelkedik — feltehetően egyszeri nagyobb adományok. A Húzósín (13 600 Ft) és a Hőségriadó (7 265 Ft) szintén magas egyéb átlaggal bír. A Fúró és Betegőrző feliratkozói adnak átlagosan többet a saját projektjükön belül (7 344 Ft ill. 5 698 Ft).</p>
 </div>
 
 <div class="section">
-  <div class="section-title">Napi átlagos bankkártyás bevétel (Ft/nap)</div>
-  <div class="chart-wrap" style="height:280px;">
-    <canvas id="dailyBar"></canvas>
-  </div>
-  <p class="insight">A CO-mérő induló napi átlaga (28 147 Ft/nap) és a Zöld táska (60 110 Ft/nap) kiemelkedő. A Mentőmotoros (25 080 Ft/nap) és a Betegőrző (14 103 Ft/nap) követi.</p>
-</div>
-
-<div class="section">
-  <div class="section-title">Adományozók neme – feliratkozó vs. egyéb bontásban (bankkártya)</div>
+  <div class="section-title">Fizetési módok összetétele (eHM4-26 csekk-anomália nélkül)</div>
   <div class="legend">
-    <span class="legend-item"><span class="legend-swatch" style="background:#c0398e"></span>Nő · feliratkozó</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#e6a4cc"></span>Nő · egyéb</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#1d5fa3"></span>Férfi · feliratkozó</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#9bc1e8"></span>Férfi · egyéb</span>
-    <span class="legend-item"><span class="legend-swatch" style="background:#bbb"></span>Ismeretlen nem</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#3a7bd5"></span>Bankkártya</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#2ecc89"></span>Átutalás</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#d4a822"></span>Csekk</span>
   </div>
   <div class="chart-wrap" style="height:320px;">
-    <canvas id="genderBar"></canvas>
+    <canvas id="payChart"></canvas>
   </div>
 </div>
 
-<p style="font-size:11px;color:#ccc;text-align:right;margin-top:0.5rem;">Generálva: 2026-10-05 · ⚠ eHM4-26 csekkadatban hibás bejegyzés kizárva</p>
+<div class="section">
+  <div class="section-title">Nem adománygyűjtő Meta Ads kampányok (2026)</div>
+  <table class="nem-adom-table">
+    <thead>
+      <tr>
+        <th>Projektkód</th>
+        <th>Kampány neve</th>
+        <th>Célkitűzés</th>
+        <th style="text-align:right;">Meta hirdetési költés</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge">ePM5-26</span></td>
+        <td>Újraélesztés toborzó</td>
+        <td><span class="badge">Leads</span></td>
+        <td style="text-align:right; color: #e8973e; font-weight:500;">97 952 Ft</td>
+      </tr>
+      <tr>
+        <td><span class="badge">eSM1-26</span></td>
+        <td>1% Egypercen Videó</td>
+        <td><span class="badge">Engagement</span></td>
+        <td style="text-align:right; color: #e8973e; font-weight:500;">591 261 Ft</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="3" style="font-size:11px; color:#4a4860;">Összesen (beleszámítva az összes hirdetési keret felhasználásába)</td>
+        <td style="text-align:right;">689 213 Ft</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="insight" style="margin-top:0.75rem;">Ez a 689 213 Ft a fenti összesítőben az „összes hirdetési költés" (3 848 625 Ft) részét képezi, de az adománygyűjtő ROI-számításokba <strong style="color:#d2d0de;">nem</strong> számít bele.</p>
+</div>
+
 </div>
 
 <script>
-const projektek = [
-  ['Hóhelyzet','eSM3-26'],
-  ['Betegőrző','eHM1-26'],
-  ['Fúró','eHM2-26'],
-  ['Képeslap','eSM5-26'],
-  ['Mentőmotoros','eHM3-26'],
-  ['Támogatáska','eSM2-26'],
-  ['Hőségriadó','eSM7-26'],
-  ['Zöld táska','eHM4-26'],
-  ['CO-mérő','eHM5-26']
-];
-const projColors = ['#185FA5','#0F6E56','#854F0B','#993556','#534AB7','#A07E00','#C0392B','#1E8449','#5D4037'];
+Chart.defaults.color = '#5a5878';
+Chart.defaults.borderColor = '#1e1e2a';
+Chart.defaults.font.family = 'system-ui, -apple-system, sans-serif';
+Chart.defaults.font.size = 11;
 
-const d = {
-  fel_összeg:   [1441500, 3160000, 2209542,  801000, 1287100, 1478994,  58000, 1522980,  310500],
-  egyeb_összeg: [ 558500,  210348,  279500,  117000, 1672299,  670000, 494000, 2083620,  168000],
-  fel_fő:       [210, 489, 264, 230, 224,  88, 12, 244,  61],
-  egyeb_fő:     [ 31,  41,  41,  16, 211,  67, 68, 365,  33],
-  bank:         [2000000, 3370348, 2489042, 918000, 2959399, 2148994, 552000, 3606600, 478500],
-  atur:         [ 486500, 1094702,  153500, 159000,  278000,   17000,  63000,  367500,  59000],
-  csekk:        [ 114025,  191715,   56500,  41000,   83000,   10005,   3000,   73005,  26001],
-  avg_fel:      [5000, 5000, 5000, 2000, 5000, 3000, 4000, 5000, 5000],
-  avg_egyeb:    [5000, 5000, 5000, 5000, 5000, 3000, 5000, 5000, 5000],
-  total:        [2000000, 3370348, 2489042, 918000, 2959399, 2148994, 552000, 3606600, 478500],
-  hird:         [169630, 254941, 131226, 199881, 561433, 835478, 129927, 600815, 158517],
-  napok:        [257, 239, 197, 155, 118, 274, 52, 60, 17],
-  corp:         [133000, 45000, 32300, 5000, 147000, 0, 0, 163000, 33000],
-  corp_fo:      [12, 4, 4, 1, 5, 0, 0, 10, 4],
-  no_fel:       [67, 175, 75, 93, 77, 32,  8,  98, 14],
-  no_egyeb:     [ 6,  10, 15,  5, 84, 28, 33, 158,  6],
-  ferfi_fel:    [59, 163, 94, 55, 73, 18,  2,  61, 23],
-  ferfi_egyeb:  [11,  17, 14,  3, 39,  7,  7,  52,  9],
-  ism_fel:      [84, 151, 95, 82, 74, 38,  2,  85, 24],
-  ism_egyeb:    [14,  14, 12,  8, 88, 32, 28, 155, 18],
+const labels = ['Hóhelyzet','Betegőrző','Fúró','Képeslap','Csomagtartó','Támogatáska','Hőségriadó','Zöld táska','CO-mérő','LUCAS 3','Húzósín'];
+const colors = ['#4a8fd4','#2ecc89','#e8973e','#d46a88','#8878e8','#d4a822','#e85540','#3dba68','#9c8070','#38c9d4','#d46cb0'];
+const felBev  = [1454500,3208000,2254542,816000,1303100,1693992,58000,1560480,513500,31000,227000];
+const egyebBev= [558500,212348,362000,122000,1703299,868000,494000,2111620,377500,648999,272000];
+const bankBev = felBev.map((f,i)=>f+egyebBev[i]);
+const hirdet  = [169630,254941,131226,199881,216559,835478,129927,600815,158517,295048,167390];
+const atur    = [486500,1104702,156500,159000,278000,17000,63000,370500,107500,60000,70001];
+const csekk   = [114025,191715,58500,41000,83000,10005,3000,48003,48003,26000,9001]; // eHM4-26 csekk anomaly excluded
+const avgFel  = [5638,5698,7344,3138,5130,3422,4833,5758,4890,3875,7323];
+const avgEgyeb= [18016,4938,5569,4880,6841,3790,7265,5542,5101,6691,13600];
+
+const felColors   = colors.map(c=>c+'cc');
+const egyebColors = colors.map(c=>c+'66');
+
+function fmt(n){ return new Intl.NumberFormat('hu-HU').format(Math.round(n))+' Ft'; }
+
+const baseOpts = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label: ctx => fmt(ctx.parsed.y||ctx.parsed) } } },
+  scales:{
+    x:{ grid:{ color:'#1e1e2a' }, ticks:{ color:'#5a5878' } },
+    y:{ grid:{ color:'#1e1e2a' }, ticks:{ color:'#5a5878', callback: v => (v>=1000000?(v/1000000).toFixed(1)+'M':(v>=1000?(v/1000)+'k':v))+' Ft' } }
+  }
 };
 
-function tickFt(v) {
-  if (v === 0) return '0';
-  if (v >= 1000000) { const m=v/1000000; return (Number.isInteger(m)?m:parseFloat(m.toFixed(1)))+' M'; }
-  if (v >= 1000) return Math.round(v/1000)+' e';
-  return v+'';
-}
-function xCat() {
-  return { grid:{display:false}, ticks:{font:{size:10}, maxRotation:20, minRotation:0} };
-}
-function yVal(cb, stacked) {
-  return { stacked:!!stacked, grid:{color:'rgba(0,0,0,0.05)'}, ticks:{font:{size:11}, color:'#999', callback:cb} };
-}
-
+// Total stacked bar
 new Chart(document.getElementById('totalBar'), {
   type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'Feliratkozó',  data:d.fel_összeg,   backgroundColor:'#3266ad', borderRadius:3, borderSkipped:false },
-    { label:'Egyéb forrás', data:d.egyeb_összeg, backgroundColor:'#e07b39', borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>ctx.parsed.y===0?null:' '+ctx.dataset.label+': '+ctx.parsed.y.toLocaleString('hu-HU')+' Ft'}}},
-    scales:{x:{...xCat(),stacked:true}, y:yVal(tickFt,true)}
-  }
+  data:{
+    labels,
+    datasets:[
+      { label:'Feliratkozó', data:felBev, backgroundColor:colors.map(c=>c+'bb'), borderRadius:3, stack:'s' },
+      { label:'Egyéb', data:egyebBev, backgroundColor:colors.map(c=>c+'55'), borderRadius:3, stack:'s' }
+    ]
+  },
+  options:{...baseOpts, plugins:{...baseOpts.plugins,
+    tooltip:{ callbacks:{ label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.y)}` } }
+  }}
 });
 
+// Revenue vs cost
 new Chart(document.getElementById('roiBar'), {
   type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'Egyéb bevétel',    data:d.egyeb_összeg, backgroundColor:'#3266ad', borderRadius:3, borderSkipped:false },
-    { label:'Hirdetési költés', data:d.hird,         backgroundColor:'#e24b4a', borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>' '+ctx.dataset.label+': '+ctx.parsed.y.toLocaleString('hu-HU')+' Ft'}}},
-    scales:{x:xCat(), y:yVal(tickFt,false)}
-  }
+  data:{
+    labels,
+    datasets:[
+      { label:'Bevétel', data:bankBev, backgroundColor:colors.map(c=>c+'99'), borderRadius:3 },
+      { label:'Hirdetés', data:hirdet, backgroundColor:'#e84a4a66', borderColor:'#e84a4a', borderWidth:1, borderRadius:3 }
+    ]
+  },
+  options:{...baseOpts, plugins:{...baseOpts.plugins,
+    tooltip:{ callbacks:{ label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.y)}` } }
+  }}
 });
 
-const roiValues = projektek.map((_,i)=>parseFloat((d.egyeb_összeg[i]/d.hird[i]).toFixed(2)));
+// ROI ratio
+const roiVals = egyebBev.map((e,i)=> hirdet[i]>0 ? +(e/hirdet[i]).toFixed(2) : 0);
 new Chart(document.getElementById('roiRatioBar'), {
   type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'ROI', data:roiValues, backgroundColor:projColors, borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>' ROI: '+ctx.parsed.y+'× (egyéb bevétel / hirdetési költés)'}}},
-    scales:{x:xCat(), y:yVal(v=>v+'×',false)}
+  data:{
+    labels,
+    datasets:[{
+      label:'ROI',
+      data:roiVals,
+      backgroundColor: roiVals.map(v=> v>=3?'#1db83699': v>=1?'#d4a82299':'#e8554099'),
+      borderColor:     roiVals.map(v=> v>=3?'#1db836':  v>=1?'#d4a822':  '#e85540'),
+      borderWidth:1, borderRadius:3
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{ callbacks:{ label: ctx => `ROI: ${ctx.parsed.y.toFixed(2)}×` } }
+    },
+    scales:{
+      x:{ grid:{color:'#1e1e2a'}, ticks:{color:'#5a5878'} },
+      y:{ grid:{color:'#1e1e2a'}, ticks:{color:'#5a5878', callback: v=>v+'×' },
+          border:{ dash:[4,4] } }
+    }
   }
 });
 
-new Chart(document.getElementById('donorsBar'), {
-  type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'Feliratkozó',  data:d.fel_fő,   backgroundColor:'#3266ad', borderRadius:3, borderSkipped:false },
-    { label:'Egyéb forrás', data:d.egyeb_fő, backgroundColor:'#e07b39', borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>' '+ctx.dataset.label+': '+ctx.parsed.y+' fő'}}},
-    scales:{x:{...xCat(),stacked:true}, y:yVal(v=>v,true)}
-  }
-});
-
-const felAranyek = projektek.map((_,i)=>Math.round(d.fel_fő[i]/(d.fel_fő[i]+d.egyeb_fő[i])*100));
-new Chart(document.getElementById('ratioBar'), {
-  type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'Feliratkozó arány', data:felAranyek, backgroundColor:projColors, borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>' Feliratkozó arány: '+ctx.parsed.y+'%'}}},
-    scales:{x:xCat(), y:{min:0,max:100, grid:{color:'rgba(0,0,0,0.05)'}, ticks:{font:{size:11},color:'#999',callback:v=>v+'%'}}}
-  }
-});
-
-new Chart(document.getElementById('corpBar'), {
-  type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'Vállalati adomány', data:d.corp, backgroundColor:'#2E4057', borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>ctx.parsed.y===0?null:' Vállalati adomány: '+ctx.parsed.y.toLocaleString('hu-HU')+' Ft ('+d.corp_fo[ctx.dataIndex]+' vállalat)'}}},
-    scales:{x:xCat(), y:yVal(tickFt,false)}
-  }
-});
-
-new Chart(document.getElementById('payBar'), {
-  type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'Bankkártya', data:d.bank,  backgroundColor:'#3266ad', borderRadius:3, borderSkipped:false },
-    { label:'Átutalás',   data:d.atur,  backgroundColor:'#6fa8dc', borderRadius:3, borderSkipped:false },
-    { label:'Csekk',      data:d.csekk, backgroundColor:'#a4c2f4', borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>ctx.parsed.y===0?null:' '+ctx.dataset.label+': '+ctx.parsed.y.toLocaleString('hu-HU')+' Ft'}}},
-    scales:{x:{...xCat(),stacked:true}, y:yVal(tickFt,true)}
-  }
-});
-
+// Avg donation
 new Chart(document.getElementById('avgBar'), {
   type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'Feliratkozó átlag', data:d.avg_fel,   backgroundColor:'#3266ad', borderRadius:3, borderSkipped:false },
-    { label:'Egyéb átlag',       data:d.avg_egyeb, backgroundColor:'#e07b39', borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>' '+ctx.dataset.label+': '+ctx.parsed.y.toLocaleString('hu-HU')+' Ft'}}},
-    scales:{x:xCat(), y:yVal(v=>v===0?'0':v.toLocaleString('hu-HU')+' Ft',false)}
-  }
+  data:{
+    labels,
+    datasets:[
+      { label:'Feliratkozók átlag', data:avgFel, backgroundColor:colors.map(c=>c+'aa'), borderRadius:3 },
+      { label:'Egyéb átlag', data:avgEgyeb, backgroundColor:colors.map(c=>c+'44'), borderRadius:3 }
+    ]
+  },
+  options:{...baseOpts, plugins:{...baseOpts.plugins,
+    tooltip:{ callbacks:{ label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.y)}` } }
+  }}
 });
 
-const daily = projektek.map((_,i)=>Math.round(d.total[i]/d.napok[i]));
-new Chart(document.getElementById('dailyBar'), {
+// Payment methods (horizontal stacked, eHM4-26 csekk anomaly excluded)
+const csekk2 = [114025,191715,58500,41000,83000,10005,3000,48003,48003,26000,9001]; // eHM4-26 csekk 10M excluded
+new Chart(document.getElementById('payChart'), {
   type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'Ft/nap', data:daily, backgroundColor:projColors, borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>' '+Math.round(ctx.parsed.y).toLocaleString('hu-HU')+' Ft/nap'}}},
-    scales:{x:xCat(), y:yVal(tickFt,false)}
-  }
-});
-
-new Chart(document.getElementById('genderBar'), {
-  type:'bar',
-  data:{ labels:projektek, datasets:[
-    { label:'Nő · feliratkozó',         data:d.no_fel,      backgroundColor:'#c0398e', stack:'no',    borderRadius:3, borderSkipped:false },
-    { label:'Nő · egyéb',               data:d.no_egyeb,    backgroundColor:'#e6a4cc', stack:'no',    borderRadius:3, borderSkipped:false },
-    { label:'Férfi · feliratkozó',      data:d.ferfi_fel,   backgroundColor:'#1d5fa3', stack:'ferfi', borderRadius:3, borderSkipped:false },
-    { label:'Férfi · egyéb',            data:d.ferfi_egyeb, backgroundColor:'#9bc1e8', stack:'ferfi', borderRadius:3, borderSkipped:false },
-    { label:'Ismeretlen · feliratkozó', data:d.ism_fel,     backgroundColor:'#bbb',    stack:'ism',   borderRadius:3, borderSkipped:false },
-    { label:'Ismeretlen · egyéb',       data:d.ism_egyeb,   backgroundColor:'#ddd',    stack:'ism',   borderRadius:3, borderSkipped:false }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>ctx.parsed.y===0?null:' '+ctx.dataset.label+': '+ctx.parsed.y+' fő'}}},
-    scales:{x:{...xCat(),stacked:true}, y:{stacked:true, grid:{color:'rgba(0,0,0,0.05)'}, ticks:{font:{size:11},color:'#999'}}}
+  data:{
+    labels,
+    datasets:[
+      { label:'Bankkártya', data:bankBev, backgroundColor:'#3a7bd566', borderColor:'#3a7bd5', borderWidth:1, stack:'p', borderRadius:2 },
+      { label:'Átutalás', data:atur, backgroundColor:'#2ecc8966', borderColor:'#2ecc89', borderWidth:1, stack:'p', borderRadius:2 },
+      { label:'Csekk (anomália nélkül)', data:csekk2, backgroundColor:'#d4a82266', borderColor:'#d4a822', borderWidth:1, stack:'p', borderRadius:2 }
+    ]
+  },
+  options:{...baseOpts,
+    indexAxis:'y',
+    scales:{
+      x:{grid:{color:'#1e1e2a'}, ticks:{color:'#5a5878', callback:v=>(v>=1000000?(v/1000000).toFixed(1)+'M':(v>=1000?(v/1000)+'k':v))+' Ft'}},
+      y:{grid:{color:'#1e1e2a'}, ticks:{color:'#5a5878'}}
+    },
+    plugins:{
+      legend:{display:true, labels:{color:'#7a7898', boxWidth:11, padding:12}},
+      tooltip:{ callbacks:{ label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.x)}` } }
+    }
   }
 });
 </script>
