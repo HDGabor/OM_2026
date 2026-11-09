@@ -122,13 +122,13 @@
     <div class="card-tag" style="background:#d8f5f8;color:#0a6878;">LUCAS 3</div>
     <div class="card-value">724 499 Ft</div>
     <div class="card-sub">eSM11-26 · 116 adományozó · 117 tranzakció · 19 nap<br>2026.10.21 – 11.09. · új projekt</div>
-    <div class="card-roi" style="color:#38c9d4;">Hirdetés: 295 048 Ft · ROI: 2,34×</div>
+    <div class="card-roi" style="color:#38c9d4;">Hirdetés: 295 048 Ft · ROI: 2,45×</div>
   </div>
   <div class="card" style="border-color:#e8c8d8;">
     <div class="card-tag" style="background:#fce8f4;color:#8a2878;">Húzósín</div>
     <div class="card-value">645 250 Ft</div>
     <div class="card-sub">eHM6-26 · 79 adományozó · 79 tranzakció · 18 nap<br>2026.10.22 – 11.09. · új projekt</div>
-    <div class="card-roi" style="color:#d46cb0;">Hirdetés: 167 390 Ft · ROI: 2,01×</div>
+    <div class="card-roi" style="color:#d46cb0;">Hirdetés: 167 390 Ft · ROI: 3,86×</div>
   </div>
 </div>
 
@@ -139,11 +139,11 @@
   </div>
   <div class="summary-row-item">
     <span class="summary-row-label">Ebből e-mailből (feliratkozók)</span>
-    <span class="summary-row-value">13 300 614 Ft</span>
+    <span class="summary-row-value">12 958 614 Ft</span>
   </div>
   <div class="summary-row-item">
     <span class="summary-row-label">Egyéb forrásból</span>
-    <span class="summary-row-value">7 900 016 Ft</span>
+    <span class="summary-row-value">8 242 016 Ft</span>
   </div>
   <div class="summary-row-item">
     <span class="summary-row-label">Adománygyűjtő hirdetési költés</span>
@@ -319,14 +319,14 @@ Chart.defaults.font.size = 11;
 
 const labels = ['Hóhelyzet','Betegőrző','Fúró','Képeslap','Csomagtartó','Támogatáska','Hőségriadó','Zöld táska','CO-mérő','LUCAS 3','Húzósín'];
 const colors = ['#4a8fd4','#2ecc89','#e8973e','#d46a88','#8878e8','#d4a822','#e85540','#3dba68','#9c8070','#38c9d4','#d46cb0'];
-const felBev  = [1492500,3208000,2254542,821000,1306100,1734992,58000,1566480,517000,34000,308000];
-const egyebBev= [568500,221348,362000,122000,1706299,909000,494000,2111620,377500,690499,337250];
+const felBev  = [1492500,3208000,2254542,821000,1306100,1734992,58000,1566480,517000,0,0];
+const egyebBev= [568500,221348,362000,122000,1706299,909000,494000,2111620,377500,724499,645250];
 const bankBev = felBev.map((f,i)=>f+egyebBev[i]);
 const hirdet  = [169630,254941,231212,199881,344874,835478,129927,600815,457108,295048,167390];
 const atur    = [486500,1104702,156500,159000,278000,17000,63000,370500,107500,85000,91001];
 const csekk   = [114025,191715,58500,41000,83000,10005,3000,48003,48003,26000,9001]; // eHM4-26 csekk anomaly excluded
-const avgFel  = [5528,5698,7344,3146,5122,3429,4833,5738,4877,3778,6696];
-const avgEgyeb= [17766,5031,5569,4880,6825,3788,7265,5542,5101,6394,10220];
+const avgFel  = [5528,5698,7344,3146,5122,3429,4833,5738,4877,0,0];
+const avgEgyeb= [17766,5031,5569,4880,6825,3788,7265,5542,5101,6192,8167];
 
 const felColors   = colors.map(c=>c+'cc');
 const egyebColors = colors.map(c=>c+'66');
